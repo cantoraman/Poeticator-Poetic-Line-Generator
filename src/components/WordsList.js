@@ -2,7 +2,6 @@ import React from 'react';
 import Word from './Word.js';
 
 const WordsList = function (props) {
-  console.log(props);
 
   const wordsComponents  = props.words.map((word, index) => {
 

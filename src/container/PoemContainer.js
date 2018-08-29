@@ -1,7 +1,8 @@
 import React from 'react';
 import PageTitle from '../components/PageTitle.js';
 import ThemeSelector from '../components/ThemeSelector.js';
- import WordsList from '../components/WordsList.js';
+import WordsList from '../components/WordsList.js';
+import RhymingWordsList from '../components/RhymingWordsList.js'
 
 
 class PoemContainer extends React.Component{
@@ -10,6 +11,7 @@ class PoemContainer extends React.Component{
     this.state = {
       words: [],
       themes: ['love', 'nature', 'anger', 'war'],
+      selectedWord: null,
       selectedTheme: null,
       rhymingWords: null
     }
@@ -36,6 +38,7 @@ handleThemeSelected(selection){
   this.getWordsData(selectedTheme);
 }
 handleWordClicked(word){
+  this.setState({selectedWord: word});
   const url = `https://api.datamuse.com/words?&rel_rhy=${word}&max=25`;
   fetch(url)
   .then((res) => {
@@ -52,6 +55,7 @@ render(){
       <PageTitle/>
       <ThemeSelector themes={this.state.themes} onThemeSelected={this.handleThemeSelected}/>
       <WordsList words={this.state.words} onWordClicked={this.handleWordClicked}/>
+      <RhymingWordsList rhymingWords={this.state.rhymingWords} selectedWord={this.state.selectedWord}/>
     </div>
   );
 
