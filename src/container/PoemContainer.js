@@ -54,8 +54,8 @@ render(){
     <div className="poem-container">
       <PageTitle/>
       <ThemeSelector themes={this.state.themes} onThemeSelected={this.handleThemeSelected}/>
-      <WordsList words={this.state.words} onWordClicked={this.handleWordClicked}/>
-      <RhymingWordsList rhymingWords={this.state.rhymingWords} selectedWord={this.state.selectedWord}/>
+      <WordsList words={this.state.words} onWordClicked={this.handleWordClicked} />
+      <RhymingWordsList rhymingWords={this.state.rhymingWords} selectedWord={this.state.selectedWord} />
     </div>
   );
 
