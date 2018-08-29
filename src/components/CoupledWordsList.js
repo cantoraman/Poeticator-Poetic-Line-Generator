@@ -3,13 +3,17 @@ import WritingWord from './WritingWord.js';
 
 const CoupledWordsList = (props) => {
 
-  if(!props.coupledWords) return null;
+  if(!props.couplingWords) return (
+    <div className="coupled-words-list">
+      <h3>Words Couples</h3>
+    </div>
+  );
 
-  const coupledWordsComponents  = props.coupledWords.map((word, index) => {
+  const coupledWordsComponents  = props.couplingWords.map((word, index) => {
 
     return (
       <div >
-        <WritingWord firstWord={word.word} secondWord={props.selectedWord} handleClick={props.onWordClicked} key={index}/>
+        <WritingWord firstWord={word.word} secondWord={props.rhymingWord} handleClick={props.onWordClicked} key={index}/>
       </div>
 
     )
@@ -17,7 +21,7 @@ const CoupledWordsList = (props) => {
 
   return(
     <div className="coupled-words-list">
-      <h3>Words that Couples with {props.selectedWord}</h3>
+      <h3>Words that Couples with {props.rhymingWord}</h3>
       {coupledWordsComponents}
     </div>
   )

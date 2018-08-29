@@ -17,7 +17,7 @@ class PoemContainer extends React.Component{
       rhymingWord: null,
       selectedTheme: null,
       rhymingWords: null,
-      coupledWords: null,
+      couplingWords: null,
       poem: null
     }
     this.handleThemeSelected = this.handleThemeSelected.bind(this);
@@ -58,28 +58,23 @@ handleWordClicked(word){
 }
 
 handleRhymingWordClicked(word){
-  // this.setState({rhymingWord: word});
+   this.setState({rhymingWord: word});
   const url = `https://api.datamuse.com/words?rel_bgb=${word}&max=25`;
   fetch(url)
   .then((res) => {
     return res.json();
   })
   .then((words) => {
-    this.setState({coupledWords: words})
+    console.log(words);
+    this.setState({couplingWords: words})
   })
 }
 
 handleWritingWordClicked(word){
-  // this.setState({selectedWord: word});
+    if (this.state.poem==null)
+      this.state.poem="";
     const poem = this.state.poem+" "+word;
-  // const url = `https://api.datamuse.com/words?rel_bgb=${word}&max=25`;
-  // fetch(url)
-  // .then((res) => {
-  //   return res.json();
-  // })
-  // .then((words) => {
     this.setState({poem: poem})
-//  })
 }
 
 render(){
@@ -93,8 +88,8 @@ render(){
         selectedWord={this.state.selectedWord}
         onWordClicked={this.handleRhymingWordClicked} />
       <CoupledWordsList
-        coupledWords={this.state.coupledWords}
-        selectedWord={this.state.selectedWord}
+        couplingWords={this.state.couplingWords}
+        rhymingWord={this.state.rhymingWord}
         onWordClicked={this.handleWritingWordClicked}/>
       <PoemLine
         poem={this.state.poem}
