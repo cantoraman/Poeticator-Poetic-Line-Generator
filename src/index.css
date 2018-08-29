@@ -23,7 +23,7 @@ h1{
 .poem-container{
   display:grid;
   grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto;
 }
 
 .page-title{
@@ -36,11 +36,20 @@ h1{
   grid-row: 2 / span 1;
 }
 
+.poem-line{
+  grid-column: 1 / span 3;
+  grid-row: 3 / span 1;
+}
+
 .words-list {
   grid-column: 1 / span 1;
-  grid-row: 3/ span 1;
+  grid-row: 4/ span 1;
 }
 .rhyming-words-list {
   grid-column: 2 / span 1;
-  grid-row: 3/ span 1;
+  grid-row: 4/ span 1;
+}
+.coupled-words-list{
+  grid-column: 3 / span 1;
+  grid-row: 4/ span 1;
 }

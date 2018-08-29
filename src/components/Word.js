@@ -5,6 +5,8 @@ const Word = function (props) {
 function handleClick(){
   props.handleClick(props.word);
 }
+
+
   if(!props) return null;
   return (
     <div onClick={handleClick}

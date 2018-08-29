@@ -16,7 +16,7 @@ const WordsList = function (props) {
 
   return(
     <div className="words-list">
-      <h3  >Word Choices</h3>
+      <h3>Word Choices</h3>
       {wordsComponents}
     </div>
   )
