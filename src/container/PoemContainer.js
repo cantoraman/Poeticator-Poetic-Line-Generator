@@ -73,21 +73,25 @@ handleWriteOrder(word){
   }
 }
 
-handleUtilityOrder(word){
-  switch(word) {
-    case "return":
+handleUtilityOrder(sign){
+  if (this.state.poem!=null){
+    var poem = this.state.poem;
+    switch(sign) {
+      case "return":
+          poem = poem + '\n';
+          break;
+      case "delete":
+        console.log(sign);
+          break;
 
-        break;
-    case "delete":
-        code block
-        break;
-
-    default:
-
+      default:
+        console.log(sign);
+    }
+    this.setState({poem: poem});
   }
 }
 
-{/* <button onClick={handleUtilityButton} value="return">New Line</button>
+/* <button onClick={handleUtilityButton} value="return">New Line</button>
 <button onClick={handleUtilityButton} value="delete">Delete Word</button>
 <button onClick={handleUtilityButton} value="...">. . .</button>
 <button onClick={handleUtilityButton} value="!">!</button>
@@ -97,7 +101,7 @@ handleUtilityOrder(word){
 <button onClick={handleUtilityButton} value="or">or</button>
 <button onClick={handleUtilityButton} value="the">the</button>
 <button onClick={handleUtilityButton} value="any">any</button>
-<button onClick={handleUtilityButton} value="some">some</button> */}
+<button onClick={handleUtilityButton} value="some">some</button> */
 
 handleCoupleOrder(word){
   this.setState({rhymingWord: word});
