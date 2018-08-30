@@ -81,7 +81,8 @@ handleUtilityOrder(sign){
           poem = poem + '\n';
           break;
       case "delete":
-        console.log(sign);
+          var lastIndex = poem.lastIndexOf(" ");
+          poem = poem.substring(0, lastIndex);
           break;
 
       default:
@@ -90,6 +91,7 @@ handleUtilityOrder(sign){
     this.setState({poem: poem});
   }
 }
+
 
 /* <button onClick={handleUtilityButton} value="return">New Line</button>
 <button onClick={handleUtilityButton} value="delete">Delete Word</button>
