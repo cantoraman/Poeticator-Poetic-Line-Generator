@@ -11,17 +11,23 @@ const UtilityLine = (props) => {
 
     return (
       <div className = "utility-line">
-        <button onClick={handleUtilityButton} value="return">New Line</button>
-        <button onClick={handleUtilityButton} value="delete">Delete Word</button>
+        <div>
+          <button onClick={handleUtilityButton} value="return">New Line</button>
+          <button onClick={handleUtilityButton} value="delete">Delete Word</button>
+          <button onClick={handleUtilityButton} value="clear">Clear All</button>
+        </div>
+        <div>
         <button onClick={handleUtilityButton} value="...">. . .</button>
         <button onClick={handleUtilityButton} value="!">!</button>
         <button onClick={handleUtilityButton} value="?">?</button>
         <button onClick={handleUtilityButton} value=".">.</button>
+        <button onClick={handleUtilityButton} value=",">,</button>
         <button onClick={handleUtilityButton} value="and">and</button>
         <button onClick={handleUtilityButton} value="or">or</button>
         <button onClick={handleUtilityButton} value="the">the</button>
         <button onClick={handleUtilityButton} value="any">any</button>
         <button onClick={handleUtilityButton} value="some">some</button>
+        </div>
       </div>
     )
 

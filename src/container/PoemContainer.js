@@ -80,13 +80,15 @@ handleUtilityOrder(sign){
       case "return":
           poem = poem + '\n';
           break;
+      case "clear":
+          poem = "";
+          break;
       case "delete":
           var lastIndex = poem.lastIndexOf(" ");
           poem = poem.substring(0, lastIndex);
           break;
-
       default:
-        console.log(sign);
+        poem = poem +" "+sign;
     }
     this.setState({poem: poem});
   }
@@ -113,7 +115,6 @@ handleCoupleOrder(word){
     return res.json();
   })
   .then((words) => {
-    console.log(words);
     this.setState({couplingWords: words})
   })
 }

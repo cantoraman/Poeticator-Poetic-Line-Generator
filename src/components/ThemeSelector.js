@@ -18,7 +18,7 @@ const ThemeSelector = (props) => {
         defaultValue="default"
         onChange={handleChange}
       >
-      <option disabled value="selected">Select a theme...</option>
+      <option selected value="selected">Select a theme...</option>
       {options}
       </select>
     )

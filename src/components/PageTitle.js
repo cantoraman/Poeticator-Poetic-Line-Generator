@@ -3,7 +3,11 @@ import React from 'react';
 
 const PageTitle = function () {
   return (
-    <h1 className="page-title">Poeticator</h1>
+    <div className="page-title">
+      <h1 >Poeticator</h1>
+      <h3>AI infused Poet Maker</h3>
+    </div>
+
   )
 };
 
