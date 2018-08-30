@@ -98,16 +98,8 @@ handleRhymingWordClicked(word){
     return res.json();
   })
   .then((words) => {
-    console.log(words);
     this.setState({couplingWords: words})
   })
-}
-
-handleWritingWordClicked(word){
-    if (this.state.poem==null)
-      this.state.poem="";
-    const poem = this.state.poem+" "+word;
-    this.setState({poem: poem})
 }
 
 render(){
@@ -131,7 +123,7 @@ render(){
       <CoupledWordsList
         couplingWords={this.state.couplingWords}
         rhymingWord={this.state.rhymingWord}
-        onWordClicked={this.handleWritingWordClicked}/>
+        onWordClicked={this.handleWriteOrder}/>
       <PoemLine
         poem={this.state.poem}
       />
