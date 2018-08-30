@@ -24,13 +24,8 @@ class PoemContainer extends React.Component{
     this.handleWriteOrder = this.handleWriteOrder.bind(this);
     this.handleCoupleOrder = this.handleCoupleOrder.bind(this);
 
-
     this.handleThemeSelected = this.handleThemeSelected.bind(this);
     this.getWordsData = this.getWordsData.bind(this);
-    //this.handleWordClicked = this.handleWordClicked.bind(this);
-    this.handleRhymingWordClicked = this.handleRhymingWordClicked.bind(this);
-    this.handleWritingWordClicked = this.handleWritingWordClicked.bind(this);
-
 
   }
 
@@ -51,7 +46,7 @@ handleThemeSelected(selection){
   this.getWordsData(selectedTheme);
 }
 
-///////////////////////////////////////////////////////
+
 handleRhymeOrder(word){
   const wordx = word
   this.setState({selectedWord: wordx});
@@ -87,20 +82,7 @@ handleCoupleOrder(word){
     this.setState({couplingWords: words})
   })
 }
-////////////////////////////////////
 
-
-handleRhymingWordClicked(word){
-  this.setState({rhymingWord: word});
-  const url = `https://api.datamuse.com/words?rel_bgb=${word}&max=25`;
-  fetch(url)
-  .then((res) => {
-    return res.json();
-  })
-  .then((words) => {
-    this.setState({couplingWords: words})
-  })
-}
 
 render(){
   return(
@@ -130,7 +112,7 @@ render(){
     </div>
   );
 
-}
+  }
 
 }
 
