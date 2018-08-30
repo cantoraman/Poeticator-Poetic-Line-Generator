@@ -41,7 +41,7 @@ h1{
   grid-row: 3 / span 1;
 }
 
-.utilities-line{
+.utility-line{
   grid-column: 1 / span 3;
   grid-row: 4 / span 1;
 }

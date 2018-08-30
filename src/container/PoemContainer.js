@@ -5,6 +5,7 @@ import WordsList from '../components/WordsList.js';
 import RhymingWordsList from '../components/RhymingWordsList.js'
 import CoupledWordsList from '../components/CoupledWordsList.js'
 import PoemLine from '../components/PoemLine.js'
+import UtilityLine from '../components/UtilityLine.js'
 
 
 class PoemContainer extends React.Component{
@@ -23,6 +24,8 @@ class PoemContainer extends React.Component{
     this.handleRhymeOrder = this.handleRhymeOrder.bind(this);
     this.handleWriteOrder = this.handleWriteOrder.bind(this);
     this.handleCoupleOrder = this.handleCoupleOrder.bind(this);
+
+    this.handleUtilityOrder = this.handleUtilityOrder.bind(this);
 
     this.handleThemeSelected = this.handleThemeSelected.bind(this);
     this.getWordsData = this.getWordsData.bind(this);
@@ -70,6 +73,32 @@ handleWriteOrder(word){
   }
 }
 
+handleUtilityOrder(word){
+  switch(word) {
+    case "return":
+
+        break;
+    case "delete":
+        code block
+        break;
+
+    default:
+
+  }
+}
+
+{/* <button onClick={handleUtilityButton} value="return">New Line</button>
+<button onClick={handleUtilityButton} value="delete">Delete Word</button>
+<button onClick={handleUtilityButton} value="...">. . .</button>
+<button onClick={handleUtilityButton} value="!">!</button>
+<button onClick={handleUtilityButton} value="?">?</button>
+<button onClick={handleUtilityButton} value=".">.</button>
+<button onClick={handleUtilityButton} value="and">and</button>
+<button onClick={handleUtilityButton} value="or">or</button>
+<button onClick={handleUtilityButton} value="the">the</button>
+<button onClick={handleUtilityButton} value="any">any</button>
+<button onClick={handleUtilityButton} value="some">some</button> */}
+
 handleCoupleOrder(word){
   this.setState({rhymingWord: word});
   const url = `https://api.datamuse.com/words?rel_bgb=${word}&max=25`;
@@ -89,6 +118,7 @@ render(){
     <div className="poem-container">
       <PageTitle/>
       <ThemeSelector themes={this.state.themes} onThemeSelected={this.handleThemeSelected}/>
+      <UtilityLine handleUtilityOrder={this.handleUtilityOrder}/>
       <WordsList
         words={this.state.words}
         onRhymeOrder={this.handleRhymeOrder}
@@ -115,6 +145,5 @@ render(){
   }
 
 }
-
 
 export default PoemContainer;
