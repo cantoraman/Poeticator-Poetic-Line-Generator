@@ -13,7 +13,12 @@ const RhymingWordsList = (props) => {
 
     return (
       <div >
-        <Word word={word.word} handleClick={props.onWordClicked} key={index}/>
+        <Word
+          word={word.word}
+          handleRhyme={props.onRhymeOrder}
+          handleWrite={props.onWriteOrder}
+          handleCouple={props.onCoupleOrder}
+          key={index}/>
       </div>
 
     )

@@ -20,11 +20,17 @@ class PoemContainer extends React.Component{
       couplingWords: null,
       poem: null
     }
+    this.handleRhymeOrder = this.handleRhymeOrder.bind(this);
+    this.handleWriteOrder = this.handleWriteOrder.bind(this);
+    this.handleCoupleOrder = this.handleCoupleOrder.bind(this);
+
+
     this.handleThemeSelected = this.handleThemeSelected.bind(this);
     this.getWordsData = this.getWordsData.bind(this);
-    this.handleWordClicked = this.handleWordClicked.bind(this);
+    //this.handleWordClicked = this.handleWordClicked.bind(this);
     this.handleRhymingWordClicked = this.handleRhymingWordClicked.bind(this);
     this.handleWritingWordClicked = this.handleWritingWordClicked.bind(this);
+
 
   }
 
@@ -45,8 +51,10 @@ handleThemeSelected(selection){
   this.getWordsData(selectedTheme);
 }
 
-handleWordClicked(word){
-  this.setState({selectedWord: word});
+///////////////////////////////////////////////////////
+handleRhymeOrder(word){
+  const wordx = word
+  this.setState({selectedWord: wordx});
   const url = `https://api.datamuse.com/words?&rel_rhy=${word}&max=25`;
   fetch(url)
   .then((res) => {
@@ -57,8 +65,33 @@ handleWordClicked(word){
   })
 }
 
+handleWriteOrder(word){
+  if (this.state.poem!=null){
+    const poem = this.state.poem+" "+word;
+    this.setState({poem: poem})
+  }
+  else{
+    this.setState({poem: word});
+  }
+}
+
+handleCoupleOrder(word){
+  this.setState({rhymingWord: word});
+  const url = `https://api.datamuse.com/words?rel_bgb=${word}&max=25`;
+  fetch(url)
+  .then((res) => {
+    return res.json();
+  })
+  .then((words) => {
+    console.log(words);
+    this.setState({couplingWords: words})
+  })
+}
+////////////////////////////////////
+
+
 handleRhymingWordClicked(word){
-   this.setState({rhymingWord: word});
+  this.setState({rhymingWord: word});
   const url = `https://api.datamuse.com/words?rel_bgb=${word}&max=25`;
   fetch(url)
   .then((res) => {
@@ -82,11 +115,19 @@ render(){
     <div className="poem-container">
       <PageTitle/>
       <ThemeSelector themes={this.state.themes} onThemeSelected={this.handleThemeSelected}/>
-      <WordsList words={this.state.words} onWordClicked={this.handleWordClicked} />
+      <WordsList
+        words={this.state.words}
+        onRhymeOrder={this.handleRhymeOrder}
+        onWriteOrder={this.handleWriteOrder}
+        onCoupleOrder={this.handleCoupleOrder}
+      />
       <RhymingWordsList
         rhymingWords={this.state.rhymingWords}
         selectedWord={this.state.selectedWord}
-        onWordClicked={this.handleRhymingWordClicked} />
+        onRhymeOrder={this.handleRhymeOrder}
+        onWriteOrder={this.handleWriteOrder}
+        onCoupleOrder={this.handleCoupleOrder}
+      />
       <CoupledWordsList
         couplingWords={this.state.couplingWords}
         rhymingWord={this.state.rhymingWord}
